@@ -159,48 +159,77 @@ export default function Hero() {
           <div className="absolute w-56 h-56 sm:w-72 sm:h-72 rounded-full border border-dashed border-blush/30 animate-[spin_25s_linear_infinite_reverse] pointer-events-none" />
 
           {/* Main Center Product Visual */}
-          <motion.div 
-            className="relative z-20 cursor-pointer"
-            whileHover={{ scale: 1.05, rotate: -1 }}
-            transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-          >
-            <ProductVisual 
-              category="face-care" 
-              accent={15} 
-              shape="jar" 
-              className="w-48 sm:w-60 md:w-64 drop-shadow-[0_25px_35px_rgba(0,0,0,0.4)] transition-all duration-300" 
-            />
-          </motion.div>
+          <motion.div
+  className="relative z-20"
+  whileHover={{ scale: 1.04, rotate: -1 }}
+  transition={{ type: "spring", stiffness: 200, damping: 18 }}
+>
+  
+  <img
+    src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=900&q=80"
+    alt="Luxury Skincare"
+    className="w-[300px] sm:w-[360px] lg:w-[430px]
+               rounded-[32px]
+               object-cover
+               shadow-[0_40px_80px_rgba(0,0,0,0.35)]
+               hover:scale-105
+               transition-all
+               duration-500"
+    draggable={false}
+  />
+</motion.div>
 
           {/* Floating Glass Card Left */}
-          <motion.div
-            style={{ x: floatOneX, y: floatOneY }}
-            className="absolute top-[10%] left-[2%] sm:left-[5%] z-30 pointer-events-none"
-          >
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-              className="p-3 sm:p-4 rounded-2xl bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl"
-            >
-              <ProductVisual category="skincare" accent={0} shape="bottle" className="w-16 sm:w-22 drop-shadow-md" />
-              <div className="mt-1 text-[10px] font-bold uppercase tracking-wider text-center text-white">Serum Elixir</div>
-            </motion.div>
-          </motion.div>
+         <motion.div
+  style={{ x: floatOneX, y: floatOneY }}
+  className="absolute top-[10%] left-[2%] sm:left-[5%] z-30"
+>
+  <motion.div
+    animate={{ y: [0, -10, 0] }}
+    transition={{
+      duration: 5,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+    className="rounded-3xl bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl p-3"
+  >
+    <img
+      src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?auto=format&fit=crop&w=400&q=80"
+      alt="Serum"
+      className="w-24 h-28 rounded-2xl object-cover"
+    />
+
+    <p className="mt-3 text-xs font-semibold tracking-widest uppercase text-center text-white">
+      Vitamin C Serum
+    </p>
+  </motion.div>
+</motion.div>
 
           {/* Floating Glass Card Right */}
           <motion.div
-            style={{ x: floatTwoX, y: floatTwoY }}
-            className="absolute bottom-[10%] right-[2%] sm:right-[5%] z-30 pointer-events-none"
-          >
-            <motion.div 
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-              className="p-3 sm:p-4 rounded-2xl bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl"
-            >
-              <ProductVisual category="fragrances" accent={12} shape="bottle" className="w-16 sm:w-22 drop-shadow-md" />
-              <div className="mt-1 text-[10px] font-bold uppercase tracking-wider text-center text-white">Botanical Nectar</div>
-            </motion.div>
-          </motion.div>
+  style={{ x: floatTwoX, y: floatTwoY }}
+  className="absolute bottom-[10%] right-[2%] sm:right-[5%] z-30"
+>
+  <motion.div
+    animate={{ y: [0, 12, 0] }}
+    transition={{
+      duration: 6,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+    className="rounded-3xl bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl p-3"
+  >
+    <img
+      src="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=400&q=80"
+      alt="Perfume"
+      className="w-24 h-28 rounded-2xl object-cover"
+    />
+
+    <p className="mt-3 text-xs font-semibold tracking-widest uppercase text-center text-white">
+      Botanical Perfume
+    </p>
+  </motion.div>
+</motion.div>
 
           {/* Floating Light Micro Card */}
           <motion.div
