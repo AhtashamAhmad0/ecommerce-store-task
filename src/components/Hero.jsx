@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { ArrowUpRight, Sparkles, Star, ShieldCheck, Leaf } from 'lucide-react'
-import ProductVisual from './ProductVisual'
 
 // Animation variants for staggered typography reveal
 const containerVariants = {

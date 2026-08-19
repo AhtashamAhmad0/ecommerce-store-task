@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Star, Minus, Plus, ShoppingBag, MessageCircle, Check } from 'lucide-react'
-import ProductVisual from '../components/ProductVisual'
+import { getProductImage } from '../data/productImages'
 import ProductCard from '../components/ProductCard'
 import SectionHeading from '../components/SectionHeading'
 import { getProductBySlug, getRelated, discountedPrice, categories } from '../data/products'
@@ -54,12 +54,17 @@ export default function ProductDetails() {
           className="relative rounded-[2rem] bg-gradient-to-br from-cream-dark to-blush aspect-square flex items-center justify-center overflow-hidden"
         >
           {product.badge && (
-            <span className="absolute top-5 left-5 label-caps text-[10px] bg-berry text-cream px-3 py-1.5 rounded-full">{product.badge}</span>
+            <span className="absolute top-5 left-5 z-10 label-caps text-[10px] bg-berry text-cream px-3 py-1.5 rounded-full">{product.badge}</span>
           )}
           {product.discount > 0 && (
-            <span className="absolute top-5 right-5 label-caps text-[10px] bg-gold text-ink px-3 py-1.5 rounded-full">-{product.discount}%</span>
+            <span className="absolute top-5 right-5 z-10 label-caps text-[10px] bg-gold text-ink px-3 py-1.5 rounded-full">-{product.discount}%</span>
           )}
-          <ProductVisual category={product.category} accent={product.accent} shape={product.accent % 3 === 0 ? 'jar' : 'bottle'} className="w-64 md:w-80 drop-shadow-2xl" />
+          <img
+            src={getProductImage(product)}
+            alt={product.name}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>

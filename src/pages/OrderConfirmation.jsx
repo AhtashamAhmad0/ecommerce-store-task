@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { CheckCircle2, MessageCircle, Package } from 'lucide-react'
-import ProductVisual from '../components/ProductVisual'
+import { getProductImage } from '../data/productImages'
 
 export default function OrderConfirmation() {
   const [order, setOrder] = useState(undefined)
@@ -44,8 +44,8 @@ export default function OrderConfirmation() {
         <div className="space-y-4">
           {order.lines.map((l) => (
             <div key={l.slug} className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-cream rounded-lg flex items-center justify-center shrink-0">
-                <ProductVisual category={l.category} accent={l.accent} className="h-9 w-auto" />
+              <div className="w-12 h-12 bg-cream rounded-lg overflow-hidden flex items-center justify-center shrink-0">
+                <img src={getProductImage({ slug: l.slug, category: l.category, accent: l.accent })} alt={l.name} className="w-full h-full object-cover" loading="lazy" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm text-ink line-clamp-1">{l.name}</p>

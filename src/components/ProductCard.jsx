@@ -2,43 +2,17 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Plus, Eye, ShoppingBag, Star } from 'lucide-react'
-import ProductVisual from './ProductVisual'
 import { discountedPrice, categories } from '../data/products'
 import { useCart } from '../context/CartContext'
-const CATEGORY_IMAGES = {
-  skincare:
-    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=900&q=80",
+import { getProductImage, DEFAULT_FALLBACK_IMAGE } from '../data/productImages'
 
-  makeup:
-    "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80",
-
-  "lip-care":
-    "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=80",
-
-  "hair-care":
-    "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=900&q=80",
-
-  fragrances:
-    "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=80",
-
-  "face-care":
-    "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=900&q=80",
-
-  "body-care":
-    "https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=900&q=80",
-
-  "beauty-accessories":
-    "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=80",
-}
 export default function ProductCard({ product, index = 0 }) {
   const { addItem } = useCart()
   const [isAdded, setIsAdded] = useState(false)
 
   const catLabel = categories?.find((c) => c.slug === product.category)?.name || product.category
   const price = discountedPrice(product)
-const image =
-  CATEGORY_IMAGES[product.category] ||
-  "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=900&q=80"
+  const image = getProductImage(product)
 
   const handleAddToCart = (e) => {
     e.preventDefault()
@@ -91,8 +65,7 @@ const image =
     loading="lazy"
     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
     onError={(e) => {
-      e.currentTarget.src =
-        "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=900&q=80";
+      e.currentTarget.src = DEFAULT_FALLBACK_IMAGE;
     }}
   />
 

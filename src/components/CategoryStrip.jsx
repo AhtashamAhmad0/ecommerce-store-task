@@ -14,6 +14,7 @@ import {
   Sparkles 
 } from 'lucide-react'
 import { categories } from '../data/products'
+import { CATEGORY_IMAGE_POOL } from '../data/productImages'
 
 // Icon Mapping
 const ICONS = { 
@@ -67,11 +68,12 @@ export default function CategoryStrip() {
           </motion.p>
         </div>
 
-        {/* Clean Light Floating Cards Grid */}
+        {/* Image Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories?.map((c, i) => {
             const IconComponent = ICONS[c.icon] || Sparkles
             const formattedIndex = String(i + 1).padStart(2, '0')
+            const image = CATEGORY_IMAGE_POOL[c.slug]?.[0] || CATEGORY_IMAGE_POOL.skincare[0]
 
             return (
               <motion.div
@@ -83,15 +85,26 @@ export default function CategoryStrip() {
               >
                 <Link
                   to={`/shop?category=${c.slug}`}
-                  className="group relative flex flex-col justify-between p-7 rounded-[2rem] bg-cream text-berry hover:bg-white transition-all duration-500 h-[280px] overflow-hidden shadow-2xl shadow-berry-dark/50 hover:shadow-white/20 hover:-translate-y-1.5"
+                  className="group relative flex flex-col justify-between p-7 rounded-[2rem] h-[280px] overflow-hidden shadow-2xl shadow-berry-dark/50 hover:shadow-white/20 hover:-translate-y-1.5 transition-all duration-500"
                 >
-                  {/* Top Row: Berry Badge Icon & Subtle Index */}
+                  {/* Background Photo */}
+                  <img
+                    src={image}
+                    alt={c.name}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
+
+                  {/* Readability Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-berry-dark via-berry-dark/55 to-berry-dark/10 group-hover:from-berry-dark/95 transition-colors duration-500" />
+
+                  {/* Top Row: Icon Badge & Index */}
                   <div className="flex items-start justify-between relative z-10">
-                    <div className="w-12 h-12 rounded-2xl bg-berry text-cream group-hover:bg-berry-dark flex items-center justify-center transition-all duration-300 shadow-md">
+                    <div className="w-12 h-12 rounded-2xl bg-white/95 text-berry flex items-center justify-center transition-all duration-300 shadow-md backdrop-blur-sm">
                       <IconComponent size={20} strokeWidth={1.8} />
                     </div>
 
-                    <span className="font-mono text-xs font-bold text-berry/40 group-hover:text-berry transition-colors">
+                    <span className="font-mono text-xs font-bold text-white/70 group-hover:text-white transition-colors">
                       {formattedIndex}
                     </span>
                   </div>
@@ -100,22 +113,19 @@ export default function CategoryStrip() {
                   <div className="relative z-10">
                     <div className="flex items-end justify-between gap-3">
                       <div>
-                        <h3 className="font-display text-2xl font-semibold text-berry group-hover:text-berry-dark transition-colors">
+                        <h3 className="font-display text-2xl font-semibold text-white transition-colors">
                           {c.name}
                         </h3>
-                        <p className="text-xs text-berry/70 mt-2 line-clamp-2 leading-relaxed font-normal">
+                        <p className="text-xs text-white/80 mt-2 line-clamp-2 leading-relaxed font-normal">
                           {c.blurb || 'Bioactive formulas engineered for daily health and natural skin glow.'}
                         </p>
                       </div>
 
-                      <div className="w-9 h-9 rounded-full bg-berry/10 text-berry group-hover:bg-berry group-hover:text-cream flex items-center justify-center shrink-0 transition-all duration-300 group-hover:rotate-45">
+                      <div className="w-9 h-9 rounded-full bg-white/15 text-white group-hover:bg-white group-hover:text-berry flex items-center justify-center shrink-0 transition-all duration-300 group-hover:rotate-45 backdrop-blur-sm">
                         <ArrowUpRight size={18} />
                       </div>
                     </div>
                   </div>
-
-                  {/* Subtle Inner Card Lighting Glow */}
-                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blush/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 </Link>
               </motion.div>
             )

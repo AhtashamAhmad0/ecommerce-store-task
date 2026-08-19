@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from 'lucide-react'
-import ProductVisual from '../components/ProductVisual'
+import { getProductImage } from '../data/productImages'
 import { useCart, computeTotals } from '../context/CartContext'
 import { products } from '../data/products'
 
@@ -41,8 +41,8 @@ export default function Cart() {
                 transition={{ duration: 0.25 }}
                 className="flex gap-4 md:gap-6 bg-cream-dark/60 rounded-2xl p-4 md:p-5 items-center"
               >
-                <Link to={`/product/${product.slug}`} className="shrink-0 w-20 h-20 md:w-24 md:h-24 bg-cream rounded-xl flex items-center justify-center">
-                  <ProductVisual category={product.category} accent={product.accent} className="h-16 w-auto" />
+                <Link to={`/product/${product.slug}`} className="shrink-0 w-20 h-20 md:w-24 md:h-24 bg-cream rounded-xl overflow-hidden flex items-center justify-center">
+                  <img src={getProductImage(product)} alt={product.name} className="w-full h-full object-cover" loading="lazy" />
                 </Link>
                 <div className="flex-1 min-w-0">
                   <Link to={`/product/${product.slug}`} className="font-display text-lg text-ink hover:text-berry transition-colors line-clamp-1">

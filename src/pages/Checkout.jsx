@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import ProductVisual from '../components/ProductVisual'
+import { getProductImage } from '../data/productImages'
 import { useCart, computeTotals } from '../context/CartContext'
 import { products } from '../data/products'
 
@@ -123,8 +123,8 @@ export default function Checkout() {
           <div className="space-y-4 max-h-72 overflow-y-auto pr-1">
             {lines.map(({ product, qty, subtotal: lineSub }) => (
               <div key={product.id} className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-cream rounded-lg flex items-center justify-center shrink-0">
-                  <ProductVisual category={product.category} accent={product.accent} className="h-9 w-auto" />
+                <div className="w-12 h-12 bg-cream rounded-lg overflow-hidden flex items-center justify-center shrink-0">
+                  <img src={getProductImage(product)} alt={product.name} className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm text-ink line-clamp-1">{product.name}</p>
