@@ -242,7 +242,7 @@ export default function Hero() {
             </div>
             <div>
               <p className="text-xs font-semibold text-berry-dark leading-none">Organic Actives</p>
-              <p className="text-[10px] text-berry/70 mt-0.5">Cold-pressed botanical oils</p>
+              <p className="text-[10px] text-berry/70 mt-0.5">Cold-pressed botanical oils 100% pure</p>
             </div>
           </motion.div>
 

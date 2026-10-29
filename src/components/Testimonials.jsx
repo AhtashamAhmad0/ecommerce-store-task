@@ -20,6 +20,12 @@ const testimonials = [
     quote: 'Checkout was so easy and the packaging felt genuinely premium. My new go-to for gifting, too.',
     rating: 4,
   },
+  {
+    name: 'Ameer.',
+    role: 'Verified Buyer',
+    quote: 'Checkout was so easy and the packaging felt genuinely premium. My new go-to for gifting, too.highly recommended',
+    rating: 4,
+  },
 ]
 
 export default function Testimonials() {
