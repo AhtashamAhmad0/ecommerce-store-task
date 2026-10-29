@@ -57,7 +57,7 @@ export default function Footer() {
 
         <div>
           <p className="label-caps text-[11px] text-gold mb-4">Stay in the know</p>
-          <p className="text-sm text-cream/60 mb-3">New arrivals, offers, and beauty edits &mdash; straight to your inbox.</p>
+          <p className="text-sm text-cream/60 mb-3">New arrivals, offers, and beauty edits &mdash; straight to your inbox immediately.</p>
           <form onSubmit={(e) => e.preventDefault()} className="flex">
             <input
               type="email"
